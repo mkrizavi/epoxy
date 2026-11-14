@@ -26,8 +26,8 @@ All ten images are original AI concepts, explicitly labeled throughout the site.
 
 Set `NEXT_PUBLIC_SITE_URL` only after the production HTTPS domain is confirmed. Until then the sitemap is intentionally empty; robots has no sitemap domain, and no canonical domain is invented. No deployment or publishing is configured.
 
-Hero runs once per homepage mount using two displaced SVG mask fronts, with a CSS mask removal at completion. Without animation support the underlying photograph remains the fallback; reduced motion displays the final photograph immediately. Mobile uses a shorter sequence. Navigation and CTAs remain interactive throughout.
+Desktop hero retains the two displaced SVG fronts at 7.2 seconds. Mobile uses a transform-only organic concrete cover at 4.8 seconds, with no image mask or displacement filter. Reduced motion immediately shows the final photograph. Hidden tabs pause CSS animations. See [V2 implementation and QA](docs/implementation-v2.md).
 
 ## Verification limitations
 
-ESLint, TypeScript and production compilation are required checks. This environment has no installed browser executable and forbids local port binding, so rendered viewport, hydration, keyboard and touch testing must be completed in a browser-enabled environment. Recommended widths: 360, 390, 430, 768, 1024, 1440, 1920. Also verify reduced motion, mobile menu focus, gallery arrows/Escape/swipe and phone/email handlers.
+ESLint, TypeScript and production compilation are required checks. This environment has no installed browser executable and forbids local port binding, so rendered viewport, hydration, keyboard and touch testing must be completed in a browser-enabled environment. Recommended widths: 360, 390, 430, 768, 1024, 1440, 1920. Also verify reduced motion, mobile menu focus, gallery previous/next, Escape and swipe and phone/email handlers.

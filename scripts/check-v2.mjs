@@ -1,0 +1,31 @@
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const read = path => readFileSync(path, 'utf8');
+for (const route of ['index', 'radovi', 'o-nama', 'kontakt']) {
+  const html = read(`.next/server/app/${route}.html`);
+  assert.match(html, /<h1/);
+  assert.match(html, /tel:\+38763335359/);
+  assert.match(html, /mailto:epoxy.topalovic@gmail.com/);
+  for (const path of ['/radovi', '/o-nama', '/kontakt']) assert.ok(html.includes(`href="${path}"`));
+  assert.ok(!/[↗↘↙↖→←↑↓]/u.test(html), `${route}: decorative arrow`);
+  console.log(`${route}: static content and working link targets verified`);
+}
+const base = read('src/app/globals.css');
+const mobile = read('src/app/refinements.css');
+assert.match(base, /animation:pour 7\.2s cubic-bezier/);
+assert.match(base, /\.blob-two\{animation-delay:\.7s\}/);
+assert.match(mobile, /animation:mobile-pour 4\.8s cubic-bezier\(\.2,\.55,\.25,1\)/);
+assert.match(mobile, /\.hero-image\{mask:none;animation:none\}/);
+assert.match(mobile, /\.hero \.liquid-defs,\.hero>\.raw-concrete\{display:none\}/);
+assert.match(mobile, /@media\(prefers-reduced-motion:reduce\)/);
+assert.match(mobile, /\.mobile-resin-cover\{display:none\}/);
+assert.match(mobile, /animation-play-state:paused!important/);
+const motion = read('src/components/motion.tsx');
+assert.match(motion, /removeEventListener\('visibilitychange'/);
+assert.match(motion, /cancelAnimationFrame/);
+assert.ok(existsSync('public/textures/concrete.webp'));
+const images = readdirSync('public/images').filter(path => path.endsWith('.webp'));
+assert.equal(images.length, 10);
+for (const image of images) assert.ok(readFileSync(`public/images/${image}`).byteLength > 0);
+console.log('Spread timing, mobile filter bypass, reduced motion, cleanup and 10 local images verified.');
+console.log('Browser viewport, interaction and FPS tests require a browser-enabled environment.');

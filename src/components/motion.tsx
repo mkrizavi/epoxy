@@ -19,11 +19,16 @@ export function MotionObserver() {
       });
     };
     const visibility = () => document.documentElement.classList.toggle('motion-paused', document.hidden);
+    const finishPour = (event: AnimationEvent) => {
+      if (event.animationName === 'mobile-pour' && event.target instanceof HTMLElement) event.target.classList.add('resin-complete');
+    };
     configure(); visibility();
+    document.addEventListener('animationend', finishPour);
     media.addEventListener('change', configure);
     document.addEventListener('visibilitychange', visibility);
     return () => {
       observer.disconnect(); media.removeEventListener('change', configure);
+      document.removeEventListener('animationend', finishPour);
       document.removeEventListener('visibilitychange', visibility);
       document.documentElement.classList.remove('motion-paused');
       nodes.forEach(node => node.classList.remove('motion-ready'));
@@ -42,7 +47,8 @@ export function Reflection({ children }: { children: React.ReactNode }) {
     const update = () => { frame = 0; element.style.setProperty('--x', `${x}%`); element.style.setProperty('--y', `${y}%`); };
     const enter = () => { bounds = element.getBoundingClientRect(); };
     const move = (event: PointerEvent) => {
-      if (!media.matches || document.hidden || !bounds) return;
+      if (!media.matches || document.hidden) return;
+      if (!bounds) bounds = element.getBoundingClientRect();
       x = (event.clientX - bounds.left) / bounds.width * 100;
       y = (event.clientY - bounds.top) / bounds.height * 100;
       if (!frame) frame = requestAnimationFrame(update);

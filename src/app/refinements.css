@@ -89,3 +89,13 @@
 .about-photo.motion-ready .photo,.about-story.motion-ready .photo{clip-path:none}.about-photo.motion-ready img,.about-story.motion-ready img{transform:none}
 .mobile-menu nav a{transform:none}.menu-open .mobile-menu nav a{opacity:1}.mobile-resin-cover{will-change:auto}
 }
+.mobile-resin-cover.resin-complete{will-change:auto}
+/* Keep the lightweight renderer on tablets and phones rotated to landscape. */
+@media(min-width:761px) and (max-width:1024px) and (hover:none) and (pointer:coarse){
+.hero-image{mask:none;animation:none}.hero .liquid-defs,.hero>.raw-concrete{display:none}
+.mobile-resin-cover{display:block;position:absolute;inset:-180px 0 0;bottom:-170px;background:#343434 url('/textures/concrete.webp') repeat;pointer-events:none;animation:mobile-pour 4.8s cubic-bezier(.2,.55,.25,1) both;will-change:transform}
+.mobile-resin-cover svg{position:absolute;top:calc(100% - 1px);left:0;width:100%;height:170px;overflow:visible}
+.mobile-resin-cover.resin-complete{will-change:auto}
+.hero .resin-shine{animation:none;opacity:0}.material>.photo img{animation:none!important;height:100%;top:0}
+}
+@media(prefers-reduced-motion:reduce){.mobile-resin-cover{display:none!important;will-change:auto}}
