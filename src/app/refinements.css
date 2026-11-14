@@ -1,0 +1,91 @@
+/* V2 motion vocabulary. Restrained distance, deliberate stagger, no runtime scroll loop. */
+:root{--ease-settle:cubic-bezier(.22,.68,.18,1);--motion-short:220ms;--motion-enter:800ms}
+.header{background:var(--paper);color:var(--ink);border-bottom:1px solid #1414141a;padding-top:20px;padding-bottom:20px;animation:header-establish 650ms var(--ease-settle) both;transition:padding 300ms var(--ease-settle),box-shadow 300ms,background 300ms}
+.header.scrolled{background:var(--paper);backdrop-filter:none;box-shadow:0 6px 25px #0000000c;padding-top:12px;padding-bottom:12px}
+.brand strong{color:#343434}.brand{transition:opacity var(--motion-short)}.brand:hover{opacity:.75}
+.desktop-nav{border-left:1px solid #14141420;padding-left:32px}.desktop-nav a{font-weight:600}.desktop-nav a:after{background:#9b7c00;transition:width 300ms var(--ease-settle)}
+.header :focus-visible,.footer :focus-visible{outline-color:#685100}
+.desktop-nav a:hover,.desktop-nav a[aria-current]{color:#715b00}
+.nav-call{border:1px solid transparent}.nav-call:hover{border-color:#14141435}
+.button{justify-content:center;border:1px solid transparent;gap:0;transition:background 250ms,border-color 250ms,box-shadow 250ms,transform 250ms var(--ease-settle)}
+.button:hover{background:#ffe167;border-color:#c4a000;box-shadow:inset 0 -3px #14141418;transform:translateY(-2px)}.button:active{transform:translateY(0);box-shadow:inset 0 2px 4px #14141420}
+.text-link{gap:0;position:relative;transition:color 250ms,border-color 250ms}.text-link:after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform 350ms var(--ease-settle)}.text-link:hover:after,.text-link:focus-visible:after{transform:scaleX(1)}.text-link:hover{color:var(--yellow)}.dark-link:hover{color:#796100}
+.mobile-resin-cover{display:none}
+/* Desktop liquid geometry, displacement, easing and 7.2s duration are preserved. */
+.hero .eyebrow{animation:architectural-enter 650ms 200ms var(--ease-settle) both}
+.hero h1{animation:architectural-enter 950ms 500ms var(--ease-settle) both}
+.hero-bottom>p{animation:architectural-enter 750ms 850ms var(--ease-settle) both}
+.hero-bottom .actions{animation:architectural-enter 750ms 1050ms var(--ease-settle) both}
+.hero-foot{animation:architectural-enter 750ms 1250ms var(--ease-settle) both}
+.service-row{grid-template-columns:55px 1fr 230px;transition:border-color 300ms,background 300ms}
+.service-row .photo{opacity:.65;transition:opacity 500ms var(--ease-settle),transform 650ms var(--ease-settle)}
+.service-row:hover .photo,.service-row:focus-visible .photo{opacity:1;transform:translateX(-8px)}
+.service-row:focus-visible img{transform:scale(1.035)}.service-row:hover{border-top-color:#fdce0966}
+.service-row h3{transition:color 300ms,transform 450ms var(--ease-settle)}
+.reveal.motion-ready{transition:opacity var(--motion-enter) var(--ease-settle),transform var(--motion-enter) var(--ease-settle)}
+.page-heading.motion-ready h1,.process.motion-ready h2,.contact-cta.motion-ready h2{transform:translateY(22px);opacity:.35;transition:transform 900ms var(--ease-settle),opacity 700ms}
+.page-heading.visible h1,.process.visible h2,.contact-cta.visible h2{transform:none;opacity:1}
+.page-heading .heading-description{transition-delay:150ms}
+.about-photo.motion-ready .photo,.about-story.motion-ready .photo{clip-path:inset(0 0 10% 0);transition:clip-path 1100ms var(--ease-settle)}
+.about-photo.visible .photo,.about-story.visible .photo{clip-path:inset(0)}
+.about-photo.motion-ready img,.about-story.motion-ready img{transform:scale(1.035);transition:transform 1200ms var(--ease-settle)}
+.about-photo.visible img,.about-story.visible img{transform:scale(1)}
+.process.motion-ready .steps article{opacity:0;transform:translateY(18px);transition:opacity 650ms var(--ease-settle),transform 750ms var(--ease-settle)}
+.process.visible .steps article{opacity:1;transform:none}.steps article:nth-child(2){transition-delay:90ms!important}.steps article:nth-child(3){transition-delay:180ms!important}.steps article:nth-child(4){transition-delay:270ms!important}
+.steps article:after{content:'';position:absolute;top:-1px;left:0;width:100%;height:1px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform 1100ms var(--ease-settle)}.process.visible .steps article:after{transform:scaleX(1)}
+.system-section.motion-ready .layer{opacity:0;transform:skewY(-8deg) translateY(20px);transition:transform 1000ms var(--ease-settle),opacity 800ms}
+.system-section.visible .layer{opacity:1;transform:skewY(-8deg)}.system-section .layer-3{transition-delay:0ms}.system-section .layer-2{transition-delay:100ms}.system-section .layer-1{transition-delay:200ms}.system-section .layer-0{transition-delay:300ms}
+.system-section.visible .layers:hover .layer{transform:skewY(-8deg) translateY(calc(var(--offset,0)*10px))}
+.gallery-grid{animation:architectural-enter 450ms var(--ease-settle) both}
+.gallery-item{animation:gallery-settle 650ms var(--ease-settle) both}.gallery-item:nth-child(even){animation-delay:70ms}.gallery-item .photo{isolation:isolate}
+.gallery-item img{transition:transform 850ms var(--ease-settle),opacity 400ms}.gallery-item:focus-visible img{transform:scale(1.035)}
+.gallery-caption h2{transition:color 250ms}.gallery-item:hover h2,.gallery-item:focus-visible h2{color:var(--yellow)}
+.filters button{position:relative;transition:color 250ms,box-shadow 300ms;padding-left:4px;padding-right:4px;min-height:44px}.filters button:hover{color:var(--paper)}
+.lightbox[open]{animation:lightbox-enter 200ms var(--ease-settle) both}.lightbox::backdrop{backdrop-filter:none;background:#080808ed}
+.lightbox-bottom button{width:auto;min-width:90px;padding:12px;font-size:10px;letter-spacing:.05em;transition:background 200ms,color 200ms}.lightbox-bottom button:hover{background:var(--yellow);color:#141414}
+.lightbox .photo{animation:gallery-settle 250ms var(--ease-settle)}
+.contact-details>div{transition:border-color 300ms,background 300ms}.contact-details>div:hover,.contact-details>div:focus-within{border-color:#fdce09a8;background:#ffffff03}
+.contact-details>div:first-child dd{color:var(--yellow)}
+.footer{background:var(--paper);color:var(--ink);padding-top:70px;gap:35px;grid-template-columns:1.5fr 1fr 1fr}
+.footer-brand{font-size:clamp(28px,4vw,70px);line-height:1.05;letter-spacing:-.065em}.footer-brand strong{color:#343434}.footer p,.footer>div>a{color:#55554e}.footer>div>a:hover{color:#141414;text-decoration:underline;text-underline-offset:5px}.footer-bottom{border-color:#14141425;color:#66665f}
+.footer.motion-ready>p,.footer.motion-ready>div:not(.footer-bottom){opacity:0;transform:translateY(12px);transition:opacity 700ms 150ms,transform 800ms 150ms var(--ease-settle)}.footer.visible>p,.footer.visible>div:not(.footer-bottom){opacity:1;transform:none}
+.motion-paused *,.motion-paused *:before,.motion-paused *:after{animation-play-state:paused!important}
+@keyframes architectural-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes header-establish{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes gallery-settle{from{opacity:.4;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes lightbox-enter{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+@media(max-width:1050px){.service-row{grid-template-columns:35px 1fr 180px}.desktop-nav{padding-left:20px}.header{gap:22px}}
+@media(max-width:760px){
+.header,.header.scrolled{padding:14px 6vw;min-height:74px;gap:15px;backdrop-filter:none}.header.scrolled{box-shadow:0 5px 20px #0002}.header.menu-open{background:var(--paper)}
+.brand img{width:46px;height:38px}.brand>span{font-size:9px}.brand strong{font-size:11px}.nav-call{font-size:8px;padding:12px 10px;min-height:42px;white-space:nowrap}.menu-toggle{min-height:44px;font-weight:600;font-size:9px}
+.mobile-menu{display:block;inset:74px 0 0;height:calc(100dvh - 74px);background:var(--paper);color:#141414;padding:35px 6vw max(30px,env(safe-area-inset-bottom));opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity 250ms,transform 350ms var(--ease-settle),visibility 350ms;animation:none;border-top:1px solid #14141420}
+.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none}.mobile-menu nav a{border-color:#14141425;font-size:clamp(28px,7vw,46px);opacity:0;transform:translateY(14px);transition:opacity 250ms,transform 350ms var(--ease-settle)}
+.menu-open .mobile-menu nav a{opacity:1;transform:none;transition-delay:calc(60ms + var(--item)*55ms)}.mobile-menu nav small{color:#796100}.mobile-menu nav a[aria-current]{color:#796100}.mobile-menu>p{color:#55554e}.mobile-menu nav{margin-bottom:30px}
+/* No SVG mask/filter on the mobile image. One prepainted irregular concrete edge
+   moves out of frame using only a compositor transform. Spread remains 4.8s. */
+.hero-image{mask:none;animation:none}.hero .liquid-defs,.hero>.raw-concrete{display:none}
+.mobile-resin-cover{display:block;position:absolute;inset:-180px 0 0;bottom:-170px;background:#343434 url('/textures/concrete.webp') repeat;pointer-events:none;animation:mobile-pour 4.8s cubic-bezier(.2,.55,.25,1) both;will-change:transform}
+.mobile-resin-cover svg{position:absolute;top:calc(100% - 1px);left:0;width:100%;height:170px;overflow:visible}
+.hero .resin-shine{animation:none;transform:translateX(-100%);opacity:0}
+.hero .hero-shade:after{content:'';position:absolute;inset:35% 0 0;background:linear-gradient(115deg,transparent 35%,#ffffff0a 50%,transparent 65%);opacity:0;animation:finish-reflection 900ms 4.6s ease-out both;pointer-events:none}
+.hero h1{animation-duration:700ms;animation-delay:450ms}.hero-bottom>p{animation-duration:600ms;animation-delay:700ms}.hero-bottom .actions{animation-duration:600ms;animation-delay:850ms}.hero-foot{animation-duration:600ms;animation-delay:1000ms}
+.service-row{grid-template-columns:25px 1fr;gap:14px}.service-row .photo{opacity:1;transform:none;height:160px}.service-row:hover .photo,.service-row:focus-visible .photo{transform:none}.service-row:hover h3,.service-row:focus-visible h3{transform:none}
+.service-row .photo img,.featured-item img{transition:transform 450ms}.service-row:hover img,.featured-item:hover img{transform:none}
+.reveal.motion-ready{transform:translateY(16px);transition-duration:550ms}
+.about-photo.motion-ready .photo,.about-story.motion-ready .photo,.featured-item.reveal.motion-ready .photo{clip-path:none}.about-photo.motion-ready img,.about-story.motion-ready img{transform:none}
+.process.motion-ready .steps article{transform:translateY(10px);transition-duration:450ms}.steps article:nth-child(3){transition-delay:90ms!important}.steps article:nth-child(4){transition-delay:150ms!important}
+.material>.photo img{animation:none!important;height:100%;top:0}.reflection .light{display:none}
+.lightbox{padding-left:10px;padding-right:10px}.lightbox-bottom button{min-width:70px;font-size:8px}.lightbox-bottom p{font-size:11px;max-width:45%}.lightbox-bottom small{font-size:7px}
+.footer{grid-template-columns:1fr 1fr;gap:30px 15px;padding-top:50px}.footer-brand{font-size:clamp(25px,6.2vw,44px)}.footer p{font-size:11px}
+}
+@keyframes mobile-pour{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(-100% - 180px),0)}}
+@keyframes finish-reflection{0%{opacity:0}50%{opacity:1}100%{opacity:.25}}
+@media(hover:none){.reflection .light{display:none}.layers:hover .layer,.system-section.visible .layers:hover .layer{transform:skewY(-8deg)}}
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.mobile-resin-cover{display:none}.hero-image{mask:none;animation:none}.hero .hero-shade:after{display:none}
+.reveal.motion-ready,.page-heading.motion-ready h1,.process.motion-ready h2,.contact-cta.motion-ready h2,.process.motion-ready .steps article,.footer.motion-ready>p,.footer.motion-ready>div:not(.footer-bottom){opacity:1;transform:none}
+.system-section.motion-ready .layer{opacity:1;transform:skewY(-8deg)}.steps article:after{transform:scaleX(1)}
+.about-photo.motion-ready .photo,.about-story.motion-ready .photo{clip-path:none}.about-photo.motion-ready img,.about-story.motion-ready img{transform:none}
+.mobile-menu nav a{transform:none}.menu-open .mobile-menu nav a{opacity:1}.mobile-resin-cover{will-change:auto}
+}

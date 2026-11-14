@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { business, steps } from '@/data/site';
-export function Arrow(){return <span aria-hidden="true">↗</span>}
 export function Photo({id,alt,className='',priority=false}:{id:string;alt:string;className?:string;priority?:boolean}){return <div className={`photo ${className}`}><Image src={`/images/${id}.webp`} alt={alt} fill sizes="(max-width: 700px) 100vw, 70vw" priority={priority}/></div>}
-export function ContactCTA(){return <section className="contact-cta wrap"><p className="eyebrow">SLJEDEĆI KORAK / VAŠ PROJEKT</p><h2>VAŠ PROSTOR.<br/><span>NAŠA PRECIZNOST.</span></h2><div className="actions"><a className="button" href={business.tel}>POZOVITE NAS <Arrow/></a><Link className="text-link" href="/kontakt">POŠALJITE UPIT <Arrow/></Link></div><span className="cta-mark" aria-hidden="true">ET /</span></section>}
+export function ContactCTA(){return <section className="contact-cta wrap"><p className="eyebrow">SLJEDEĆI KORAK / VAŠ PROJEKT</p><h2>VAŠ PROSTOR.<br/><span>NAŠA PRECIZNOST.</span></h2><div className="actions"><a className="button" href={business.tel}>POZOVITE NAS</a><Link className="text-link" href="/kontakt">POŠALJITE UPIT</Link></div><span className="cta-mark" aria-hidden="true">ET /</span></section>}
 export function Process(){return <section className="process wrap"><p className="eyebrow">03 / KAKO RADIMO</p><h2>OD PODLOGE DO<br/>SAVRŠENE ZAVRŠNICE.</h2><div className="steps">{steps.map(([title,description],i)=><article key={title}><span className="step-number">0{i+1}</span><h3>{title}</h3><p>{description}</p></article>)}</div><p className="fine">Postupak i slojevi ovise o stanju podloge i odabranom sustavu.</p></section>}
