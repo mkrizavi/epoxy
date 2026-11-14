@@ -1,0 +1,5 @@
+'use client';
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+export function MotionObserver(){const path=usePathname();useEffect(()=>{const media=matchMedia('(prefers-reduced-motion: reduce)');if(media.matches)return;const nodes=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:0.08});nodes.forEach(n=>{n.classList.add('motion-ready');observer.observe(n)});return()=>{observer.disconnect();nodes.forEach(n=>n.classList.remove('motion-ready'))}},[path]);return null}
+export function Reflection({children}:{children:React.ReactNode}){const ref=useRef<HTMLDivElement>(null);return <div ref={ref} className="reflection" onPointerMove={e=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=e.currentTarget.getBoundingClientRect();ref.current?.style.setProperty('--x',`${(e.clientX-r.left)/r.width*100}%`);ref.current?.style.setProperty('--y',`${(e.clientY-r.top)/r.height*100}%`)}}>{children}<div className="light" aria-hidden="true"/></div>}
